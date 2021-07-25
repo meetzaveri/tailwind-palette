@@ -5,11 +5,26 @@ import SettingsIcon from 'assets/settings.svg'
 // css imports
 import 'react-toggle/style.css'
 
-const Settings: React.FC = () => {
+interface ShowSettingStateProps {
+    hex: boolean
+    text: boolean
+    lightDarkTint: boolean
+}
+
+type ToggleSettingStateProps = {
+    hex: React.Dispatch<React.SetStateAction<boolean>>
+    text: React.Dispatch<React.SetStateAction<boolean>>
+    lightDarkTint: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+interface SettingsProps {
+    show: ShowSettingStateProps
+    toggle: ToggleSettingStateProps
+}
+
+const Settings: React.FC<SettingsProps> = ({ show, toggle }) => {
     const [showHelpTooltip, toggleHelpTooltip] = React.useState(false)
-    const [showHex, toggleHex] = React.useState(false)
-    const [showText, toggleText] = React.useState(false)
-    const [showLightDarkTint, toggleLightDarkTint] = React.useState(false)
+
     const refNode = React.useRef<HTMLDivElement>(document.createElement('div'))
 
     React.useEffect(() => {
@@ -41,7 +56,7 @@ const Settings: React.FC = () => {
 
     return (
         <>
-            <div className="relative  float-right mt-4  w-12 " ref={refNode}>
+            <div className="fixed right-0 mr-4 mt-4  w-12 " ref={refNode}>
                 <a
                     className="p-2 w-12 bg-gray-600 rounded-md flex items-center"
                     href=""
@@ -53,16 +68,29 @@ const Settings: React.FC = () => {
                     <img
                         width={30}
                         height={30}
+                        className="transition-transform ease-in-out duration-300"
                         src={SettingsIcon}
+                        style={{
+                            transform: showHelpTooltip
+                                ? 'rotate(90deg)'
+                                : 'rotate(0deg)',
+                        }}
                         alt="settings"
                     />
                 </a>
 
-                {showHelpTooltip && (
+                <div className="relative">
                     <div
                         id="help-tooltip-box"
                         tabIndex={0}
-                        className="mt-1 px-2 py-2  w-96  shadow-md absolute outline-none right-0 border border-gray-200 "
+                        style={{
+                            opacity: showHelpTooltip ? 1 : 0,
+                            visibility: showHelpTooltip ? 'visible' : 'hidden',
+                        }}
+                        className=" mt-1 px-2 py-2  w-72  
+                            shadow-md absolute outline-none right-0 border border-gray-200 
+                             transition-all ease-in-out duration-300
+                            "
                         onBlur={(e) => {
                             if (!refNode.current.contains(e.target)) {
                                 closeHelpTooltip()
@@ -70,50 +98,52 @@ const Settings: React.FC = () => {
                         }}
                     >
                         <div className="flex items-center  py-2 ">
-                            <div className="w-2/3 text-lg">Show Hex Code</div>
+                            <div className="w-2/3 text-md">Show Hex Code</div>
                             <div className="w-1/3 text-right pr-2">
                                 <Toggle
-                                    defaultChecked={showHex}
+                                    defaultChecked={show.hex}
                                     icons={false}
-                                    checked={showHex}
+                                    checked={show.hex}
                                     tabIndex={0}
                                     name="showHexToggle"
-                                    onChange={() => toggleHex(!showHex)}
+                                    onChange={() => toggle.hex(!show.hex)}
                                 />
                             </div>
                         </div>
                         <div className="flex items-center border-t border-gray-200 py-2">
-                            <div className="w-2/3 text-lg">Show Text</div>
+                            <div className="w-2/3 text-md">Show Text</div>
                             <div className="w-1/3 text-right pr-2">
                                 <Toggle
-                                    defaultChecked={showText}
+                                    defaultChecked={show.text}
                                     icons={false}
-                                    checked={showText}
+                                    checked={show.text}
                                     tabIndex={0}
                                     name="showText"
-                                    onChange={() => toggleText(!showText)}
+                                    onChange={() => toggle.text(!show.text)}
                                 />
                             </div>
                         </div>
                         <div className="flex items-center border-t border-gray-200 py-2">
-                            <div className="w-2/3 text-lg">
-                                Show Light and Dark tints
+                            <div className="w-2/3 text-md">
+                                Show Tints and Shades
                             </div>
                             <div className="w-1/3 text-right pr-2">
                                 <Toggle
-                                    defaultChecked={showLightDarkTint}
+                                    defaultChecked={show.lightDarkTint}
                                     icons={false}
-                                    checked={showLightDarkTint}
+                                    checked={show.lightDarkTint}
                                     tabIndex={0}
                                     name="showLightDarkTints"
                                     onChange={() =>
-                                        toggleLightDarkTint(!showLightDarkTint)
+                                        toggle.lightDarkTint(
+                                            !show.lightDarkTint
+                                        )
                                     }
                                 />
                             </div>
                         </div>
                     </div>
-                )}
+                </div>
             </div>
         </>
     )
