@@ -1,5 +1,9 @@
 import * as React from 'react'
+import { useContext } from 'react'
 import { ToastProvider, useToasts } from 'react-toast-notifications'
+
+// local file imports
+import { SettingsContext } from '../App'
 
 export interface RenderPaletteProps {
     item: String
@@ -8,6 +12,9 @@ export interface RenderPaletteProps {
 
 const RenderPalette: React.FC<RenderPaletteProps> = ({ item, index }) => {
     const { addToast } = useToasts()
+    const settingsContextValue: any = useContext(SettingsContext)
+    console.log('settingsContextValue', settingsContextValue)
+
     return (
         <React.Fragment>
             <div
@@ -20,12 +27,22 @@ const RenderPalette: React.FC<RenderPaletteProps> = ({ item, index }) => {
                         className="h-20 relative"
                         style={{ background: `#${item}` }}
                     >
-                        <div className="pb-2 absolute bottom-1 w-full text-center">
-                            <span className="text-black text-sm mx-2">A</span>
-                            <span className="text-black text-lg mx-2">A</span>
-                            <span className="text-white text-sm mx-2">A</span>
-                            <span className="text-white text-lg mx-2">A</span>
-                        </div>
+                        {settingsContextValue.text ? (
+                            <div className="pb-2 absolute bottom-1 w-full text-center">
+                                <span className="text-black text-sm mx-2">
+                                    A
+                                </span>
+                                <span className="text-black text-lg mx-2">
+                                    A
+                                </span>
+                                <span className="text-white text-sm mx-2">
+                                    A
+                                </span>
+                                <span className="text-white text-lg mx-2">
+                                    A
+                                </span>
+                            </div>
+                        ) : null}
                     </div>
                     <div className="py-4 px-2 flex items-center justify-between bg-gray-100">
                         <div className="text-gray-600">{100 * index}</div>
@@ -42,7 +59,9 @@ const RenderPalette: React.FC<RenderPaletteProps> = ({ item, index }) => {
                                 })
                             }}
                         >
-                            {`#${item.toUpperCase()}`}
+                            {settingsContextValue.hex
+                                ? `#${item.toUpperCase()}`
+                                : ''}
                             <span
                                 className=" w-20  text-xs absolute -top-7 right-0 
                                         color-box-tooltip bg-gray-600 text-white px-1 py-1 cursor-pointer"

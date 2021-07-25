@@ -93,7 +93,7 @@ const InputSection: React.FC<InputSectionProps> = ({ setShowOutput }) => {
                             <div className="w-full">
                                 <button
                                     className="w-full 
-                             bg-gray-500 hover:bg-gray-700 
+                                    bg-gray-700 hover:bg-gray-500 
                             text-white font-bold px-4 py-2 rounded 
                             focus:outline-none focus:shadow-outline"
                                     type="button"
