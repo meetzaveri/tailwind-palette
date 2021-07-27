@@ -133,7 +133,7 @@ const DisplayOutput: React.FC<DisplayOutputProps> = ({
                         <div className="text-xl font-bold">
                             Generated Tailwind config{' '}
                         </div>
-                        <div>
+                        {/* <div>
                             <ReactJson
                                 style={{
                                     maxWidth: '80%',
@@ -146,6 +146,31 @@ const DisplayOutput: React.FC<DisplayOutputProps> = ({
                                 // theme="monokai"
                                 src={themeJSON}
                             />
+                        </div> */}
+                        <div className="mt-2">
+                            {/* prettier-ignore */}
+                            <pre className=" text-md bg-gray-900 rounded-lg p-4 text-gray-300 ">
+                                {`mix: {
+  ${generalPalette.map( (i,j) => `   ${j * 100}: '#${i.toUpperCase()}'`).join(', \n')}
+},`}
+
+{settingsContextValue.lightDarkTint ? (
+<>
+{`
+
+light: {
+  ${lightPalette.map( (i,j) => `   ${j * 100}: '#${i.toUpperCase()}'`).join(', \n')}
+},`}
+
+{`
+
+dark: {
+  ${darkPalette.map( (i,j) => `   ${j * 100}: '#${i.toUpperCase()}'`).join(', \n')}
+}`}
+</>
+) : (null)}
+
+                            </pre>
                         </div>
                     </div>
                 </div>
