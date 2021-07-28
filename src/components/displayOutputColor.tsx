@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useContext } from 'react'
 import ReactJson from 'react-json-view'
 
-import { ReactComponent as DoubleRightArrowSVG } from '../assets/double_right_arrow.svg'
+import CopySVGIcon from '../assets/copy.svg'
 import RenderPalette from './renderPalete'
 import { calculateShades, calculateTints } from 'utils/coreUtils'
 import { SettingsContext } from '../App'
@@ -55,6 +55,7 @@ const DisplayOutput: React.FC<DisplayOutputProps> = ({
         settingsContextValue.lightDarkTint
     )
 
+    let jsonToString = JSON.stringify(themeJSON)
     return (
         <div className="my-4">
             <div
@@ -147,7 +148,7 @@ const DisplayOutput: React.FC<DisplayOutputProps> = ({
                                 src={themeJSON}
                             />
                         </div> */}
-                        <div className="mt-2">
+                        <div className="mt-2 relative code-parent-root">
                             {/* prettier-ignore */}
                             <pre className=" text-md bg-gray-900 rounded-lg p-4 text-gray-300 ">
                                 {`mix: {
@@ -171,6 +172,26 @@ dark: {
 ) : (null)}
 
                             </pre>
+                            <a
+                                href=""
+                                className=" code-copy-section transition-opacity ease-in-out duration-300 bg-gray-200 rounded-sm px-2 py-2 absolute right-4 top-4"
+                                onClick={(e) => {
+                                    e.preventDefault()
+                                    navigator.clipboard.writeText(
+                                        jsonToString.substring(
+                                            1,
+                                            jsonToString.length - 1
+                                        )
+                                    )
+                                }}
+                            >
+                                <img
+                                    width="30"
+                                    height="30"
+                                    src={CopySVGIcon}
+                                    alt="clipboard"
+                                />
+                            </a>
                         </div>
                     </div>
                 </div>

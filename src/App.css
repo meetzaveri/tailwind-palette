@@ -65,3 +65,11 @@ body {
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
     background-color: white;
 }
+
+.code-parent-root .code-copy-section {
+    opacity: 0;
+}
+
+.code-parent-root:hover .code-copy-section {
+    opacity: 1;
+}
