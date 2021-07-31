@@ -14,9 +14,9 @@
         "static/css/2.c414ed25.chunk.css.map": "/static/css/2.c414ed25.chunk.css.map",
         "static/css/main.63c25593.chunk.css.map": "/static/css/main.63c25593.chunk.css.map",
         "static/js/2.44d9ebd5.chunk.js.LICENSE.txt": "/static/js/2.44d9ebd5.chunk.js.LICENSE.txt",
-        "./../media/copy.b139afe4.svg": "/./../media/copy.b139afe4.svg",
-        "./../media/settings.5bae0488.svg": "/./../media/settings.5bae0488.svg",
-        "./../media/spam.4f5bc168.svg": "/./../media/spam.4f5bc168.svg"
+        "../media/copy.b139afe4.svg": "/../media/copy.b139afe4.svg",
+        "../media/settings.5bae0488.svg": "/../media/settings.5bae0488.svg",
+        "../media/spam.4f5bc168.svg": "/../media/spam.4f5bc168.svg"
     },
     "entrypoints": [
         "static/js/runtime-main.780d1fd3.js",
