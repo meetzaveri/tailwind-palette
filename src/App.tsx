@@ -33,7 +33,7 @@ export const App: FC = () => {
             className="
          w-full px-8"
         >
-            <div className="w-full relative ">
+            <div className="w-full relative mt-32">
                 <SettingsContext.Provider value={showSettingsObject}>
                     <Setttings
                         show={{
@@ -47,6 +47,7 @@ export const App: FC = () => {
                             lightDarkTint: toggleLightDarkTint,
                         }}
                     />
+
                     <InputSection
                         setShowOutput={(str) => {
                             setHexCodeStr(str)

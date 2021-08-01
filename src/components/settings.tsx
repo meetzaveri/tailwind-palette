@@ -1,6 +1,7 @@
 import * as React from 'react'
 import Toggle from 'react-toggle'
 import SettingsIcon from 'assets/settings.svg'
+import GithubIcon from 'assets/github.svg'
 
 // css imports
 import 'react-toggle/style.css'
@@ -56,9 +57,40 @@ const Settings: React.FC<SettingsProps> = ({ show, toggle }) => {
 
     return (
         <>
-            <div className="fixed right-0 mr-4 mt-4  w-12 " ref={refNode}>
+            <div className="fixed left-0 z-3 top-0 w-full bg-white">
+                <div className="mt-6 pl-12 pb-2 border-b border-gray-200 w-full">
+                    <div className="text-3xl font-bold text-gray-800">
+                        {' '}
+                        Tailwind Palette
+                    </div>
+                    <div className="text-base  text-gray-500">
+                        Generate shades and tints for color with its Tailwind
+                        CSS config file
+                    </div>
+                </div>
+            </div>
+            <div className="fixed  right-24 top-4 z-3">
                 <a
-                    className="p-2 w-12 bg-gray-600 rounded-md flex items-center"
+                    className=""
+                    href="https://github.com/meetzaveri/tailwind-palette"
+                    target="_blank"
+                >
+                    <img
+                        className="p-2
+                     2xl:w-14 2xl:h-14 
+                    w-12 h-12
+                     bg-white rounded-md "
+                        src={GithubIcon}
+                        alt="github"
+                    />
+                </a>
+            </div>
+            <div className="fixed  right-0 mr-4 z-3 top-4 z-3" ref={refNode}>
+                <a
+                    className="p-3
+                    w-12 h-12 
+                    2xl:w-14 2xl:h-14
+                    bg-gray-600 rounded-md flex items-center"
                     href=""
                     onClick={(e) => {
                         e.preventDefault()
@@ -66,9 +98,7 @@ const Settings: React.FC<SettingsProps> = ({ show, toggle }) => {
                     }}
                 >
                     <img
-                        width={30}
-                        height={30}
-                        className="transition-transform ease-in-out duration-300"
+                        className="w-full h-full transition-transform ease-in-out duration-300"
                         src={SettingsIcon}
                         style={{
                             transform: showHelpTooltip
@@ -87,7 +117,7 @@ const Settings: React.FC<SettingsProps> = ({ show, toggle }) => {
                             opacity: showHelpTooltip ? 1 : 0,
                             visibility: showHelpTooltip ? 'visible' : 'hidden',
                         }}
-                        className=" mt-1 px-2 py-2  w-72  
+                        className=" mt-1 px-2 py-2  w-72  bg-white
                             shadow-md absolute outline-none right-0 border border-gray-200 
                              transition-all ease-in-out duration-300
                             "
