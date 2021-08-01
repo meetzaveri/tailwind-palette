@@ -14,7 +14,7 @@
                 i = (n(98), n(8)),
                 o = n(28),
                 d = n.n(o),
-                x = n.p + './static/media/settings.5bae0488.svg',
+                x = n.p + './media/settings.5bae0488.svg',
                 u = (n(103), n(1)),
                 j = function (e) {
                     var t = e.show,
