@@ -59,10 +59,9 @@ const Settings: React.FC<SettingsProps> = ({ show, toggle }) => {
         <>
             <div className="fixed left-0 z-3 top-0 w-full bg-white">
                 <div className="mt-6 pl-12 pb-2 border-b border-gray-200 w-full">
-                    <div className="text-3xl font-bold text-gray-800">
-                        {' '}
+                    <h1 className="text-3xl font-bold text-gray-800">
                         Tailwind Palette
-                    </div>
+                    </h1>
                     <div className="text-base  text-gray-500">
                         Generate shades and tints for color with its Tailwind
                         CSS config file
