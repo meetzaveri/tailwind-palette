@@ -2,6 +2,7 @@ import * as React from 'react'
 import Toggle from 'react-toggle'
 import SettingsIcon from 'assets/settings.svg'
 import GithubIcon from 'assets/github.svg'
+import ColoursSVG from 'assets/colours.svg'
 
 // css imports
 import 'react-toggle/style.css'
@@ -59,12 +60,19 @@ const Settings: React.FC<SettingsProps> = ({ show, toggle }) => {
         <>
             <div className="fixed left-0 z-3 top-0 w-full bg-white">
                 <div className="mt-6 pl-12 pb-2 border-b border-gray-200 w-full">
-                    <h1 className="text-3xl font-bold text-gray-800">
-                        Tailwind Palette
-                    </h1>
-                    <div className="text-base  text-gray-500">
-                        Generate shades and tints for color with its Tailwind
-                        CSS config file
+                    <div className="flex items-center ">
+                        <div>
+                            <img src={ColoursSVG} className="w-12 h-12" />
+                        </div>
+                        <div className="pl-4">
+                            <h1 className="text-3xl font-bold text-gray-800">
+                                Tailwind Palette
+                            </h1>
+                            <div className="text-base  text-gray-500">
+                                Generate shades and tints for color with its
+                                Tailwind CSS config file
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
