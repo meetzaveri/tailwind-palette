@@ -70,7 +70,7 @@ const Settings: React.FC<SettingsProps> = ({ show, toggle }) => {
                             </h1>
                             <div className="text-base  text-gray-500">
                                 Generate shades and tints for color with its
-                                Tailwind CSS config file
+                                Tailwind CSS config
                             </div>
                         </div>
                     </div>
